@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
