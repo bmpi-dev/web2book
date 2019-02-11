@@ -65,3 +65,7 @@ config :web2book, Web2book.Repo,
   database: "web2book_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :qiniu, Qiniu,
+  access_key: System.get_env("QN_AK"),
+  secret_key: System.get_env("QN_SK")

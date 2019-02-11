@@ -20,7 +20,7 @@ defmodule Web2book.MixProject do
   def application do
     [
       mod: {Web2book.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :qiniu, :git2pdf]
     ]
   end
 
@@ -43,8 +43,10 @@ defmodule Web2book.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:poison, "~> 3.1"},
-      {:git2pdf, "~> 0.3.0"}
+      {:git2pdf, "~> 0.3.0"},
+      {:qiniu, "~> 0.4.0"},
+      {:poison, ">= 0.0.0", override: true},
+      {:httpoison, ">= 0.0.0", override: true},
     ]
   end
 
