@@ -1,0 +1,7 @@
+POST http://localhost:4000/api/inbox
+Content-Type: application/json
+
+{
+  "url": "www.web2book.io",
+  "email": "me@i365.tech"
+}

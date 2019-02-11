@@ -20,7 +20,9 @@ defmodule Web2bookWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Web2bookWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", Web2bookWeb do
+    pipe_through :api
+
+    post "/inbox", PageController, :inbox
+  end
 end
