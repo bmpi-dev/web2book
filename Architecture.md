@@ -7,11 +7,11 @@
                |Elixir|     |    |     | Rust      | E
                | Web  +---->+    +<----+ PDFMaker  |  
                |      |     |    |     +-----------+  
-               |      |     |    |     +-----------+  
-               |      |     |    |     |           |  
-               +------+     | MQ +<---+| Elixir    |  
-                  A         |    |     | Scheduler | F
-                            |    |     |           |  
+               |      |     |    |     +-----------+         +-------+
+               |      |     |    |     |           |         |       |
+               +------+     | MQ +<---+| Elixir    +-------->+ Redis | H
+                  A         |    |     | Scheduler | F       |       |
+                            |    |     |           |         +-------+
                +------+     |    |     +-----------+          
                |      |     |    |     +--------------------------------------------------------------+
                | CL   |     |    |     | +-------+   +--------+   +---------+  +---------+ +--------+ |
@@ -23,10 +23,10 @@
                   B           C                                       G
                                                                        
 ## Module A                                                      
-Our front website which receive user URL and email.                                                          
+Our front websites which receive user's URL and email.
          
 ## Module B
-Our email notification system. It will send a email to user when our system make a PDF.
+Our email notification system. It will send a email to user when our system done with a PDF download path.
          
 ## Module C
 Our message queue. It is a bridge for distributed system.
@@ -38,8 +38,11 @@ Our storager which can save pdf to Qiniu cloud storage.
 Our PDF maker which can parse html to pdf.
 
 ## Module F
-Our core scheduler, it can balance our system load and dispatch user's tasks to different nodes in our cluster.
+Our core scheduler, it can balance our system load and dispatch user's tasks to different nodes in our cluster. Also it can limit the crawler request rate in same website (Rate Limiter).
 
 ## Module G
-Our html parser, it will adapt different websites such as wordpress-like, medium, blog-like. 
+Our html parser, it will adapt different websites such as wordpress-like, medium, blog-like and crawl websites to fetch html content.
+
+## Module H
+Our k-v storage which can used be a rate limiter.
 
